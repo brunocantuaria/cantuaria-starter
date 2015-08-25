@@ -1,0 +1,25 @@
+.clear {
+	clear: both;
+}
+
+.vgradient(@start: #000; @end: #fff; @begin: 5%; @finish: 95%) {
+	background-image: -webkit-linear-gradient(top, @start @begin, @end @finish);
+	background-image: linear-gradient(to bottom, @start @begin, @end @finish);
+	background-repeat: repeat-x;
+	filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",argb(@start),argb(@end)));
+}
+
+.hgradient(@start: #555; @end: #333; @begin: 0%; @finish: 100%) {
+	background-image: -webkit-linear-gradient(left, color-stop(@start @begin), color-stop(@end @finish));
+	background-image:  linear-gradient(to right, @start @begin, @end @finish);
+	background-repeat: repeat-x;
+	filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",argb(@start),argb(@end)));
+}
+
+.valign() {
+	position: relative;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
