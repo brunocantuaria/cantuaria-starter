@@ -89,6 +89,7 @@ function theme_scripts_and_styles() {
 	
 	wp_enqueue_script( 'jquery' );
 	wp_enqueue_script( 'theme-script' , get_template_directory_uri() . '/assets/js/final.min.js' );
+	wp_localize_script( 'theme-script', 'ajax_object', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) )
 		wp_enqueue_script( 'comment-reply' );

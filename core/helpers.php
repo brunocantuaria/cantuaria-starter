@@ -152,3 +152,19 @@ if ( ! function_exists( 'theme_menu' ) ) {
 
 	}
 }
+
+
+
+//Simple get field
+if (!function_exists('the_field')) {
+	function the_field($key, $post_id = 0, $echo = true) {
+
+		if ($post_id == 0)
+			$post_id = get_the_ID();
+
+		if ($echo === true)
+			echo get_post_meta( $post_id, $key, true );
+		else
+			return get_post_meta( $post_id, $key, true );
+	}
+}
