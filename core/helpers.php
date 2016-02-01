@@ -44,16 +44,20 @@ if ( ! function_exists( 'theme_share_post' ) ) {
 
 		?>
 		<div class="single-share">
-			<a href="https://twitter.com/intent/tweet?text=<?php the_title_attribute() ?> - <?php echo esc_attr( get_bloginfo( 'title', 'display' ) ) ?> <?php echo wp_get_shortlink() ?>" class="popup tw button icon" title="<?php echo _e( 'share it', 'rnv' ) ?>">
+			<a href="https://twitter.com/intent/tweet?text=<?php the_title_attribute() ?> - <?php echo esc_attr( get_bloginfo( 'title', 'display' ) ) ?> <?php echo wp_get_shortlink() ?>" class="popup tw button icon" title="<?php echo 'Share it on Twitter'; ?>">
 				<i class="fa fa-twitter"></i>
 			</a>
 
-			<a href="https://www.facebook.com/sharer.php?u=<?php echo wp_get_shortlink() ?>&t=<?php the_title_attribute() ?> - <?php echo esc_attr( get_bloginfo( 'title', 'display' ) ) ?>" class="popup fb button icon" title="<?php echo _e( 'share it', 'rnv' ) ?>">
+			<a href="https://www.facebook.com/sharer.php?u=<?php echo wp_get_shortlink() ?>&t=<?php the_title_attribute() ?> - <?php echo esc_attr( get_bloginfo( 'title', 'display' ) ) ?>" class="popup fb button icon" title="<?php echo 'Share it on Facebook'; ?>">
 				<i class="fa fa-facebook"></i>
 			</a>
 
-			<a href="https://plus.google.com/share?url=<?php echo wp_get_shortlink() ?>" class="popup gp button icon" title="<?php echo _e( 'share it', 'rnv' ) ?>">
+			<a href="https://plus.google.com/share?url=<?php echo wp_get_shortlink() ?>" class="popup gp button icon" title="<?php echo 'share it on Google Plus'; ?>">
 				<i class="fa fa-google-plus"></i>
+			</a>
+
+			<a href="http://pinterest.com/pin/create/button/?url=<?php echo wp_get_shortlink() ?>&media=<?php echo wp_get_attachment_image_src( get_post_thumbnail_id(), 'large' )[0]; ?>&description=<?php the_title_attribute() ?>" class="popup pin button icon" title="<?php echo 'share on Pinterest'; ?>">
+				<i class="fa fa-pinterest"></i>
 			</a>
 		</div> <!-- .single-share -->
 		<?php

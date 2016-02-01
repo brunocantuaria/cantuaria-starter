@@ -5,26 +5,6 @@ module.exports = function (grunt) {
 
 		pkg: grunt.file.readJSON('package.json'),
 
-		jshint: {
-			options: {
-				"asi"      : true,
-				"boss"     : true,
-				"browser"  : true,
-				"curly"    : false,
-				"debug"    : true,
-				"devel"    : true,
-				"eqeqeq"   : false,
-				"eqnull"   : true,
-				"expr"     : true,
-				"laxbreak" : true,
-				"quotmark" : "single",
-				"validthis": true
-			},
-			all: [
-				'assets/js/*.js',
-				'!assets/js/*.min.js',
-			]
-		},
 		less: {
 			dev: {
 				options: {
@@ -34,6 +14,7 @@ module.exports = function (grunt) {
 					'assets/css/final.css': [
 						'assets/less/src/*.css',
 						'assets/less/theme.less',
+						'assets/less/**/*.less'
 					]
 				}
 			}
@@ -79,15 +60,15 @@ module.exports = function (grunt) {
 			},
 			js: {
 		        files: [
-		          '<%= jshint.all %>'
+		          	'assets/js/*.js',
+					'!assets/js/*.min.js',
 		        ],
-		        tasks: ['jshint', 'uglify']
+		        tasks: ['uglify']
 		    }
 		}
 	});
 
 	// Load tasks
-	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-less');
@@ -96,7 +77,7 @@ module.exports = function (grunt) {
 	grunt.registerTask('build', [
 		'less',
 		'cssmin',
-		'jshint',
 		'uglify',
 	]);
+	
 };
