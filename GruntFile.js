@@ -65,6 +65,22 @@ module.exports = function (grunt) {
 		        ],
 		        tasks: ['uglify']
 		    }
+		},
+		browserSync: {
+			dev: {
+                bsFiles: {
+                    src : [
+                        'assets/img/*.*',
+                        'assets/css/*.css',
+                        'assets/js/*.js',
+                        '**/*.php'
+                    ]
+                },
+                options: {
+                    watchTask: true,
+                    proxy: "http://localhost/",
+                }
+            }
 		}
 	});
 
@@ -73,11 +89,8 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-less');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
+	grunt.loadNpmTasks('grunt-browser-sync');
 
-	grunt.registerTask('build', [
-		'less',
-		'cssmin',
-		'uglify',
-	]);
+	grunt.registerTask('default', ['browserSync', 'watch']);
 	
 };
