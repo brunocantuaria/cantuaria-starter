@@ -1,6 +1,27 @@
-.clear {
-	clear: both;
-}
+/*
+ * Basic Vars
+ */
+ 
+@font: 14px;
+
+@xxs: ~"max-width: 335px";
+@xs: ~"max-width: 420px";
+@sm: ~"min-width: 410px";
+@md: ~"min-width: 768px";
+@lg: ~"min-width: 992px";
+@xl: ~"min-width: 1200px";
+
+@sans: "Arial", sans-serif;
+@serif: "Times New Roman", sans-serif;
+
+@blue: #17c0ea;
+@black: #003852;
+@white: #fff;
+
+
+/*
+ * Helpers Functions
+ */
 
 .vgradient(@start: #000; @end: #fff; @begin: 5%; @finish: 95%) {
 	background-image: -webkit-linear-gradient(top, @start @begin, @end @finish);

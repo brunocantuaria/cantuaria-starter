@@ -1,13 +1,6 @@
-/*
- * Basic Vars
- */
 
-@font: 14px;
 
-@tablet: ~"min-width: 768px";
-@notebook: ~"min-width: 992px";
-@desktop: ~"min-width: 1200px";
-
+@import "_mixins.less";
 
 /*
  * Basic CSS
@@ -26,6 +19,50 @@ body, html {
 
 body {
 	font-size: @font;
+}
+
+.row {
+	&.inlined {
+		font-size: 0;
+		
+		> div {
+			font-size: @font;
+			float: none;
+			display: inline-block;
+			vertical-align: middle;
+		}
+	}
+}
+
+.button, button {
+	background: @blue;
+	color: @white;
+	text-transform: uppercase;
+	padding: 17px 45px;
+	line-height: 12px;
+	font-size: 12px;
+	border: 0;
+	border-radius: 3px;
+	display: inline-block;
+	font-weight: 700;
+	border: 2px solid @blue;
+
+	&:hover, &:focus {
+		background: @black;
+		border-color: @black;
+		color: @white;
+		text-decoration: none;
+	}
+
+	&.transparent {
+		border-color: rgba(255,255,255,0.5);
+		background: transparent;
+
+		&:hover, &:focus {
+			color: @blue;
+			background-color: @white;
+		}
+	}
 }
 
 

@@ -117,9 +117,9 @@ if ( ! function_exists( 'theme_archive_title' ) ) {
 
 //Print image
 if ( ! function_exists( 'theme_image' ) ) {
-	function theme_image( $img, $alt = false, $width = false, $height = false, $style = false, $echo = true ) {
+	function theme_image( $img, $alt = false, $width = false, $height = false, $style = false, $class = false, $echo = true ) {
 
-		$return = '<img src="'. get_template_directory_uri() . '/assets/img/'. $img .'"';
+		$return = '<img src="'. get_theme_image($img) .'"';
 
 		if ($width !== false)
 			$return .= ' width="'. $width .'"';
@@ -129,6 +129,9 @@ if ( ! function_exists( 'theme_image' ) ) {
 
 		if ($style !== false)
 			$return .= ' style="'. $style .'"';
+		
+		if ($class !== false)
+			$return .= ' class="'. $class .'"';
 
 		$return .= " />";
 
@@ -136,6 +139,17 @@ if ( ! function_exists( 'theme_image' ) ) {
 			echo $return;
 		else
 			return $return;
+
+	}
+}
+
+
+
+//Print image
+if ( ! function_exists( 'get_theme_image' ) ) {
+	function get_theme_image( $img ) {
+
+		return get_template_directory_uri() . '/assets/img/'. $img;
 
 	}
 }
