@@ -22,3 +22,7 @@ function theme_check_plugin_deps() {
 		echo '<div class="error"><p>'. sprintf(__('Our theme needs CMB2 plugin Installed. %sPlease install it.%s', THEMENAME), '<a href="'. $url .'" class="thickbox">', '</a>') .'</p></div>';
 	}
 }
+
+
+//Remove WooCommerce Style
+add_filter( 'woocommerce_enqueue_styles', '__return_false' );
