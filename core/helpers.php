@@ -186,3 +186,32 @@ if (!function_exists('the_field')) {
 			return get_post_meta( $post_id, $key, true );
 	}
 }
+
+
+
+/*
+ * Get Page by Page Template
+ */
+function get_page_by_template( $template, $onlyid = false ) {
+
+	$pages = new WP_Query(array(
+		'post_type' => 'page',
+		'meta_key' => '_wp_page_template',
+		'meta_value' => $template,
+		'posts_per_page' => '1',
+		'orderby' => 'menu_order',
+		'order' => 'DESC'
+	));
+
+	$return = false;
+
+	if ($pages->have_posts()) {
+		while ($pages->have_posts()) {
+			$pages->the_post();
+			$return = get_the_ID();
+		}
+		wp_reset_postdata();
+	}
+	return $return;
+	
+}
