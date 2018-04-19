@@ -8,25 +8,27 @@
 		
 		<?php if ( has_post_thumbnail() ): ?>
 
-			<div class="col-md-4 single-thumbnail">
+			<div class="col-12 col-md-4 single-thumbnail">
 				<a href="<?php the_permalink() ?>" rel="bookmark"><?php the_post_thumbnail() ?></a>
 			</div>
 
-			<div class="col-md-8">
+			<div class="col">
 
 		<?php else: ?>
-			<div class="col-md-12">
+			<div class="col">
 		<?php endif ?>
 
 				<header>
 
-					<h2><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title() ?></a></h2>
+					<div class="row">
 
-					<?php if ( 'page' != get_post_type() ): ?>
-						<div class="published-time"><?php echo get_the_date(); ?></div>
-					<?php endif; ?>
+						<h2 class="col-8 col-md-10"><a href="<?php the_permalink() ?>" rel="bookmark"><?php the_title() ?></a></h2>
 
-					<div class="clear"></div>
+						<?php if ( 'page' != get_post_type() ): ?>
+							<div class="published-time col"><?php echo get_the_date(); ?></div>
+						<?php endif; ?>
+
+					</div>
 
 				</header>
 
@@ -42,7 +44,7 @@
 						</div> <!-- .entry-comments -->
 					<?php endif; ?>
 
-					<?php theme_share_post(); ?>
+					<?php get_template_part( 'templates/entry', 'share' ); ?>
 
 				</footer>
 

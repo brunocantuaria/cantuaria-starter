@@ -5,8 +5,15 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class() ?>>
 
 	<header>
-		<h2 class="page-header"><?php the_title() ?></h2>
-		<div class="clear"></div>
+		
+		<div class="row">
+			
+			<h2 class="col-8 col-md-10"><?php the_title(); ?></h2>
+
+			<div class="col"><?php echo get_the_date(); ?></div>
+
+		</div>
+
 	</header>
 
 	<div class="page-content">

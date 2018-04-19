@@ -1,12 +1,11 @@
 /*
  * Basic Vars
  */
- 
+
 @font: 14px;
 
-@xxs: ~"max-width: 335px";
-@xs: ~"max-width: 420px";
-@sm: ~"min-width: 410px";
+@xs: ~"max-width: 575px";
+@sm: ~"min-width: 576px";
 @md: ~"min-width: 768px";
 @lg: ~"min-width: 992px";
 @xl: ~"min-width: 1200px";
@@ -18,7 +17,6 @@
 @black: #003852;
 @white: #fff;
 
-
 /*
  * Helpers Functions
  */
@@ -27,14 +25,30 @@
 	background-image: -webkit-linear-gradient(top, @start @begin, @end @finish);
 	background-image: linear-gradient(to bottom, @start @begin, @end @finish);
 	background-repeat: repeat-x;
-	filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",argb(@start),argb(@end)));
+	filter: e(
+		%(
+			"progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",
+			argb(@start),
+			argb(@end)
+		)
+	);
 }
 
 .hgradient(@start: #555; @end: #333; @begin: 0%; @finish: 100%) {
-	background-image: -webkit-linear-gradient(left, color-stop(@start @begin), color-stop(@end @finish));
-	background-image:  linear-gradient(to right, @start @begin, @end @finish);
+	background-image: -webkit-linear-gradient(
+		left,
+		color-stop(@start @begin),
+		color-stop(@end @finish)
+	);
+	background-image: linear-gradient(to right, @start @begin, @end @finish);
 	background-repeat: repeat-x;
-	filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",argb(@start),argb(@end)));
+	filter: e(
+		%(
+			"progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",
+			argb(@start),
+			argb(@end)
+		)
+	);
 }
 
 .valign() {

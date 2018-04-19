@@ -1,7 +1,7 @@
 <?php
 //Main Vars
 define(THEMENAME, 'cantuaria');
-define(THEMEVERSION, '0.1.2');
+define(THEMEVERSION, '0.2.0');
 
 global $sidebar;
 $sidebar = false;

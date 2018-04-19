@@ -1,10 +1,3 @@
-
-
-@import "_mixins.less";
-
-/*
- * Basic CSS
- */
 @import "_mixins.less";
 
 img {
@@ -13,7 +6,8 @@ img {
 	height: auto;
 }
 
-body, html {
+body,
+html {
 	overflow-x: hidden;
 }
 
@@ -24,7 +18,7 @@ body {
 .row {
 	&.inlined {
 		font-size: 0;
-		
+
 		> div {
 			font-size: @font;
 			float: none;
@@ -34,7 +28,8 @@ body {
 	}
 }
 
-.button, button {
+.button,
+button {
 	background: @blue;
 	color: @white;
 	text-transform: uppercase;
@@ -47,7 +42,8 @@ body {
 	font-weight: 700;
 	border: 2px solid @blue;
 
-	&:hover, &:focus {
+	&:hover,
+	&:focus {
 		background: @black;
 		border-color: @black;
 		color: @white;
@@ -55,39 +51,35 @@ body {
 	}
 
 	&.transparent {
-		border-color: rgba(255,255,255,0.5);
+		border-color: rgba(255, 255, 255, 0.5);
 		background: transparent;
 
-		&:hover, &:focus {
+		&:hover,
+		&:focus {
 			color: @blue;
 			background-color: @white;
 		}
 	}
 }
 
-
-
 /*
  * Header Style
  */
 #head {
 	padding: 10px 0;
-    box-shadow: 0 0 5px -1px #ccc;
+	box-shadow: 0 0 5px -1px #ccc;
 
-    .site-title {
-    	img {
-    		height: 40px;
-    	}
-    }
+	.site-title {
+		img {
+			height: 40px;
+		}
+	}
 }
-
-
 
 /*
  * Nav Style
  */
 .nav {
-
 	&.nav-stacked {
 		text-align: center;
 	}
@@ -103,16 +95,15 @@ body {
 	}
 
 	li {
-		&.current-menu-item, &.current_page_parent {
+		&.current-menu-item,
+		&.current_page_parent {
 			a {
-		    	color: #fff;
+				color: #fff;
 				background-color: #337ab7;
 			}
 		}
 	}
 }
-
-
 
 /*
  * Gallery Item
@@ -197,10 +188,7 @@ body {
 			width: 10%;
 		}
 	}
-
 }
-
-
 
 /*
  * Main
@@ -208,7 +196,6 @@ body {
 #main {
 	padding-top: 10px;
 }
-
 
 /*
  * Single Post
@@ -218,8 +205,8 @@ article {
 
 	header {
 		margin: 0 0 10px;
-	    padding: 0 0 10px;
-	    border-bottom: 1px solid #eee;
+		padding: 0 0 10px;
+		border-bottom: 1px solid #eee;
 
 		h2 {
 			float: left;
@@ -227,18 +214,13 @@ article {
 		}
 
 		.published-time {
-		    padding: 5px;
-		    display: inline-block;
-		    border-radius: 5px;
-		    margin: 0;
-		    background-color: #eee;
-		    float: right;
+			border-radius: 5px;
+			margin: 0;
+			background-color: #eee;
+			text-align: center;
 		}
 	}
 }
-
-
-
 
 /*
  * Footer Style
@@ -246,16 +228,14 @@ article {
 #footer {
 	margin-top: 50px;
 	padding: 10px 0;
-    box-shadow: 0 0 5px -1px #ccc;
+	box-shadow: 0 0 5px -1px #ccc;
 
-    .copy {
-
-    	p {
-    		text-align: center;
-	    	font-size: @font - 2;
-	    	padding: 10px 0;
-	    	margin: 0;
-    	}
-    	
-    }
+	.copy {
+		p {
+			text-align: center;
+			font-size: @font - 2;
+			padding: 10px 0;
+			margin: 0;
+		}
+	}
 }

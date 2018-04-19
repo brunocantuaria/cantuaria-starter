@@ -22,9 +22,6 @@ function theme_prep_support() {
 	add_theme_support( 'post-thumbnails' );
 	add_image_size( 'thumbnail', 150, 150, array('center', 'center') );
 
-	// Editor style
-	add_editor_style( '/assets/css/editor.min.css' );
-
 	// Menus
 	register_nav_menu( 'topmenu', __( 'Header menu', THEMENAME ) );
 	register_nav_menu( 'bottommenu', __( 'Footer menu', THEMENAME ) );
@@ -57,23 +54,14 @@ function theme_favicon_print() {
 
 	$url = get_template_directory_uri() . '/assets/img/favicon';
 	?>
-	<!-- Favicons Pack. Generated with http://realfavicongenerator.net/ -->
-	<link rel="apple-touch-icon" sizes="57x57" href="<?php echo $url; ?>/apple-touch-icon-57x57.png">
-	<link rel="apple-touch-icon" sizes="60x60" href="<?php echo $url; ?>/apple-touch-icon-60x60.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="<?php echo $url; ?>/apple-touch-icon-72x72.png">
-	<link rel="apple-touch-icon" sizes="76x76" href="<?php echo $url; ?>/apple-touch-icon-76x76.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="<?php echo $url; ?>/apple-touch-icon-114x114.png">
-	<link rel="apple-touch-icon" sizes="120x120" href="<?php echo $url; ?>/apple-touch-icon-120x120.png">
-	<link rel="apple-touch-icon" sizes="144x144" href="<?php echo $url; ?>/apple-touch-icon-144x144.png">
-	<link rel="apple-touch-icon" sizes="152x152" href="<?php echo $url; ?>/apple-touch-icon-152x152.png">
-	<link rel="apple-touch-icon" sizes="180x180" href="<?php echo $url; ?>/apple-touch-icon-180x180.png">
-	<link rel="icon" type="image/png" href="<?php echo $url; ?>/favicon-32x32.png" sizes="32x32">
-	<link rel="icon" type="image/png" href="<?php echo $url; ?>/android-chrome-192x192.png" sizes="192x192">
-	<link rel="icon" type="image/png" href="<?php echo $url; ?>/favicon-96x96.png" sizes="96x96">
-	<link rel="icon" type="image/png" href="<?php echo $url; ?>/favicon-16x16.png" sizes="16x16">
-	<link rel="manifest" href="<?php echo $url; ?>/manifest.json">
-	<meta name="msapplication-TileColor" content="#ffffff">
-	<meta name="msapplication-TileImage" content="<?php echo $url; ?>/mstile-144x144.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="<?php echo $url; ?>/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="<?php echo $url; ?>/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="<?php echo $url; ?>/favicon-16x16.png">
+	<link rel="manifest" href="<?php echo $url; ?>/site.webmanifest">
+	<link rel="mask-icon" href="<?php echo $url; ?>/safari-pinned-tab.svg" color="#5bbad5">
+	<link rel="shortcut icon" href="<?php echo $url; ?>/favicon.ico">
+	<meta name="msapplication-TileColor" content="#603cba">
+	<meta name="msapplication-config" content="<?php echo $url; ?>/browserconfig.xml">
 	<meta name="theme-color" content="#ffffff">
 	<?php
 
@@ -85,11 +73,18 @@ function theme_favicon_print() {
 add_action( 'wp_enqueue_scripts', 'theme_scripts_and_styles' );
 function theme_scripts_and_styles() {
 
-	wp_enqueue_style( 'theme-style' , get_template_directory_uri() . '/assets/css/final.min.css' );
+	wp_enqueue_style( 'fontawesome' , '//stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' );
+	wp_register_style( 'bootstrap-reboot' , get_template_directory_uri() . '/assets/css/vendor/bootstrap-reboot.css', '', '1.0' );
+	wp_register_style( 'bootstrap' , get_template_directory_uri() . '/assets/css/vendor/bootstrap.css', array('bootstrap-reboot'), '1.0' );
+	wp_register_style( 'theme-style' , get_template_directory_uri() . '/assets/css/theme.css', array('bootstrap'), THEMEVERSION );
+
+	wp_enqueue_style( 'theme-style' );
 	
-	wp_enqueue_script( 'jquery' );
-	wp_enqueue_script( 'theme-script' , get_template_directory_uri() . '/assets/js/final.min.js' );
+	wp_enqueue_script( 'bootstrap-js' , get_template_directory_uri() . '/assets/js/vendor/bootstrap.js' );
+	wp_register_script( 'theme-script' , get_template_directory_uri() . '/assets/js/theme.js', array('jquery'), THEMEVERSION );
 	wp_localize_script( 'theme-script', 'ajax_object', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
+
+	wp_enqueue_script( 'theme-script' );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) )
 		wp_enqueue_script( 'comment-reply' );

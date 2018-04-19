@@ -8,21 +8,23 @@
 		
 		<?php if ( has_post_thumbnail() ): ?>
 
-			<div class="col-md-12 single-thumbnail">
+			<div class="col-12 single-thumbnail">
 				<?php the_post_thumbnail() ?>
 			</div>
 
 		<?php endif; ?>
 
-		<div class="col-md-12">
+		<div class="col-12">
 
 			<header>
+		
+				<div class="row">
+					
+					<h2 class="col-8 col-md-10"><?php the_title(); ?></h2>
 
-				<h2 class="single-header"><?php the_title(); ?></h2>
+					<div class="col"><?php echo get_the_date(); ?></div>
 
-				<div class="published-time"><?php echo get_the_date(); ?></div>
-
-				<div class="clear"></div>
+				</div>
 
 			</header>
 
@@ -41,7 +43,7 @@
 					<?php echo get_the_term_list( get_the_ID(), 'post_tag', '<i class="fa fa-tags"></i>', ' ', '' ); ?>
 				</div>
 
-				<?php theme_share_post(); ?>
+				<?php get_template_part( 'templates/entry', 'share' ); ?>
 
 			</footer>
 
